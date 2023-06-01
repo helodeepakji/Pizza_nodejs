@@ -12,6 +12,6 @@ router.get('/contact',viewContact);
 
 router.post('/contact',insertContact);
 
-router.get('/login',insertUser);
+router.get('/signup',insertUser);
 
 module.exports = router;
