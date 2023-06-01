@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const router = require('./router/route');
+const router = require('../router/route');
 const Port = 8000;
 const path = require('path');
 const hbs = require('hbs');
 
-const staticPath = path.join(__dirname, "/static");
-const viewPath = path.join(__dirname, "/views");
-const layoutPath = path.join(__dirname, "/views/layout");
+const staticPath = path.join(__dirname, "/../static");
+const viewPath = path.join(__dirname, "/../views");
+const layoutPath = path.join(__dirname, "/../views/layout");
 
 app.set('views', viewPath);
 app.set('view engine', 'hbs');
