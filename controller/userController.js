@@ -7,12 +7,24 @@ const insertUser = (req, res) => {
         phone: req.body.phone,
         password: req.body.password,
     }
-    User.createUser(user,(err,results)=>{
+
+    User.getUser(user.email,(err,results)=>{
         if(!err){
-            console.log('success');
-            res.send('success');
-        }
+            if(results){
+                
+                    res.send("tum pahle se the bhai");
+            }
+            else{
+                User.createUser(user,(err,results)=>{
+                    if(!err){
+                        res.send("ok");
+                    } 
+                });
+            }
+        } 
     });
+
+ 
 
 };
 
@@ -40,6 +52,9 @@ const getuser = (req, res) => {
 const viewlogin=(req,res)=>{
     res.render('login');
 }
+const viewsignup=(req,res)=>{
+    res.render('signup');
+}
 
 
-module.exports = {insertUser,getuser,viewlogin};
+module.exports = {insertUser,getuser,viewlogin,viewsignup};
