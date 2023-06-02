@@ -10,7 +10,8 @@ User.createUser = (user , callback) => {
 
 User.getUser = (email , callback) => {
     connection.query('SELECT * FROM user WHERE email = ?',email,(error,results) => {
-        callback(error,results);
+        callback(error,results[0]);
+       
     });
 };
 
