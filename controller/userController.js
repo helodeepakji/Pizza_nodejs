@@ -11,8 +11,7 @@ const insertUser = (req, res) => {
     User.getUser(user.email,(err,results)=>{
         if(!err){
             if(results){
-                
-                    res.send("tum pahle se the bhai");
+                res.send("tum pahle se the bhai");
             }
             else{
                 User.createUser(user,(err,results)=>{
@@ -23,9 +22,6 @@ const insertUser = (req, res) => {
             }
         } 
     });
-
- 
-
 };
 
 const getuser = (req, res) => {
