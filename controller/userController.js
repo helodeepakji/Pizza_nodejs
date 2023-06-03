@@ -1,12 +1,4 @@
 const User = require('../model/user');
-const express = require('express');
-const app = express();
-const session = require('express-session');
-app.use(session({
-    secret: 'hellopizzajii',
-    resave: false,
-    saveUninitialized: true
-  }));
 
 const insertUser = (req, res) => {
     const user = {

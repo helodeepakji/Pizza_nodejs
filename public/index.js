@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const router = require('../router/route');
 const Port = 8000;
@@ -21,6 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
+app.use(session({
+    secret: 'hellopizzajii',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use('/', router);
 

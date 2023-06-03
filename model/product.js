@@ -14,5 +14,11 @@ Product.getProduct = (sno,callback) => {
     });
 };
 
+Product.searchProduct = (search,callback) => {
+    connection.query("SELECT * FROM `product` WHERE `product_name` LIKE '%"+search+"%'",(error,results) => {
+        callback(error,results);
+    });
+};
+
 module.exports = Product;
 

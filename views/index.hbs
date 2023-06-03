@@ -7,24 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
+    <style>
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .searchfield {
+            border: 2px solid black;
+        }
+    </style>
 </head>
 
 <body>
     {{>navbar}}
+
+
+    <div class="search">
+        <input type="text" name="search" id="searchfield">
+        <button id="search">Search</button>
+        <div class="search-bar backi"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#searchfield').keyup(function () {
+                var search = $('#searchfield').val();
+                if (search != '') {
+                    console.log(search);
+                    $.ajax({
+                        url: "/search",
+                        type: "POST",
+                        data: {
+                            keyword: search
+                        },
+                        success: function (results) {
+                            results = results.products;
+                            results.map(function (result) {
+                                console.log(result.product_name);
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap -m-4">
                 {{#each products}}
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                        <a href="/product/{{sno}}" class="block relative h-48 rounded overflow-hidden">
-                            <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                                src="{{image}}">
-                        </a>
-                        <div class="mt-4">
-                            <h2 class="text-gray-900 title-font text-lg font-medium">{{product_name}}</h2>
-                            <p class="mt-1">Rs. {{price}}</p>
-                        </div>
+                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                    <a href="/product/{{sno}}" class="block relative h-48 rounded overflow-hidden">
+                        <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{image}}">
+                    </a>
+                    <div class="mt-4">
+                        <h2 class="text-gray-900 title-font text-lg font-medium">{{product_name}}</h2>
+                        <p class="mt-1">Rs. {{price}}</p>
                     </div>
+                </div>
                 {{/each}}
             </div>
         </div>

@@ -38,5 +38,6 @@ router.get('/login',viewlogin);
 
 router.post('/login',getuser);
 
-router.post('/logout',userLogout);
+router.get('/logout',userLogout);
+
 module.exports = router;
