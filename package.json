@@ -4,6 +4,7 @@
     "dotenv": "^16.1.3",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "mysql": "^2.18.1",
     "node-modules": "^1.0.1",

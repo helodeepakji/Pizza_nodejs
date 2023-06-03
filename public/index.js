@@ -6,6 +6,7 @@ const path = require('path');
 const hbs = require('hbs');
 const fileUpload = require('express-fileupload');
 
+
 const staticPath = path.join(__dirname, "/../static");
 const viewPath = path.join(__dirname, "/../views");
 const layoutPath = path.join(__dirname, "/../views/layout");

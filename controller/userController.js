@@ -1,4 +1,10 @@
 const User = require('../model/user');
+const session = require('express-session');
+app.use(session({
+    secret: 'hellopizzajii',
+    resave: false,
+    saveUninitialized: true
+  }));
 
 const insertUser = (req, res) => {
     const user = {
@@ -31,7 +37,9 @@ const getuser = (req, res) => {
         if(!err){
             console.log(results);
           if(results){
-            if(req.body.password==results.password){
+            if(req.body.password==results.password)
+            {
+                req.session.email = email;   
                 res.send('login success');
             }
             else{
@@ -53,4 +61,4 @@ const viewsignup=(req,res)=>{
 }
 
 
-module.exports = {insertUser,getuser,viewlogin,viewsignup};
+module.exports = {insertUser,getuser,viewlogin,viewsignup,logoutuser};
