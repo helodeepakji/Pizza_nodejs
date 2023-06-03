@@ -34,7 +34,7 @@ const getuser = (req, res) => {
             if(req.body.password==results.password)
             {
                 req.session.email = email;   
-                res.send('login success');
+                res.redirect('/');
             }
             else{
                 res.send('incorrect password');

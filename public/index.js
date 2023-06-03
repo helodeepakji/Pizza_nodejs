@@ -25,7 +25,10 @@ app.use(fileUpload());
 app.use(session({
     secret: 'hellopizzajii',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 3600000,
+    }
 }));
 
 app.use('/', router);

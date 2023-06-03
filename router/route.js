@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {insertContact,viewContact} = require('../controller/contactController');
 const {insertUser,getuser,viewlogin,viewsignup,userLogout} = require('../controller/userController');
-const {getallProduct,getProductonly} = require('../controller/productController');
+const {getallProduct,getProductonly,searchProduct} = require('../controller/productController');
 
-
-router.get('/', getallProduct);
+const requireAuth = require('../middleware/protected')
 
 router.get('/upload',(req,res)=>{
     res.render('upload');
@@ -13,7 +12,7 @@ router.get('/upload',(req,res)=>{
 
 router.post('/upload',(req,res)=>{
     const image = req.files.image;
-
+    
     image.mv('static/'+image.name,(err)=>{
         if(err){
             console.log(err);
@@ -23,6 +22,10 @@ router.post('/upload',(req,res)=>{
         }
     });
 });
+
+router.get('/',getallProduct);
+
+router.post('/search',searchProduct);
 
 router.get('/product/:sno',getProductonly);
 
