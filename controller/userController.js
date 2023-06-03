@@ -1,4 +1,6 @@
 const User = require('../model/user');
+const express = require('express');
+const app = express();
 const session = require('express-session');
 app.use(session({
     secret: 'hellopizzajii',
@@ -53,6 +55,16 @@ const getuser = (req, res) => {
         }
     });
 };
+
+const userLogout = (req, res) => {
+    req.session.destroy((err)=>{
+        if(err){
+            res.send(err) ;
+        }
+        res.json({message:"logout success"});
+    })
+};
+
 const viewlogin=(req,res)=>{
     res.render('login');
 }
@@ -61,4 +73,4 @@ const viewsignup=(req,res)=>{
 }
 
 
-module.exports = {insertUser,getuser,viewlogin,viewsignup,logoutuser};
+module.exports = {insertUser,getuser,viewlogin,viewsignup,userLogout};

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {insertContact,viewContact} = require('../controller/contactController');
-const {insertUser,getuser,viewlogin,viewsignup,logoutuser} = require('../controller/userController');
+const {insertUser,getuser,viewlogin,viewsignup,userLogout} = require('../controller/userController');
 const {getallProduct,getProductonly} = require('../controller/productController');
 
 
@@ -38,4 +38,5 @@ router.get('/login',viewlogin);
 
 router.post('/login',getuser);
 
+router.post('/logout',userLogout);
 module.exports = router;
