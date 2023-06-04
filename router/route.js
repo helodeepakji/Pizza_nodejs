@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {insertContact,viewContact} = require('../controller/contactController');
-const {insertUser,getuser,viewlogin,viewsignup,userLogout} = require('../controller/userController');
+const {insertUser,getuser,viewlogin,viewsignup,userLogout,userCheckout,userCheckoutSubmit} = require('../controller/userController');
 const {getallProduct,getProductonly,searchProduct} = require('../controller/productController');
 
 const requireAuth = require('../middleware/protected')
@@ -42,5 +42,9 @@ router.get('/login',viewlogin);
 router.post('/login',getuser);
 
 router.get('/logout',userLogout);
+
+router.get('/checkout',userCheckout);
+
+router.post('/checkout',userCheckoutSubmit);
 
 module.exports = router;

@@ -64,5 +64,34 @@ const viewsignup=(req,res)=>{
     res.render('signup');
 }
 
+const userCheckout=(req,res)=>{
+    res.render('checkout');
+}
 
-module.exports = {insertUser,getuser,viewlogin,viewsignup,userLogout};
+const userCheckoutSubmit=(req,res)=>{
+    const details={ 
+     name :  req.body.name,
+     email :   req.body.email,
+     address :   req.body.address,
+     city :  req.body.city,
+     state :   req.body.state,
+     country :   req.body.country,
+     product :   "pp",
+     order_id:"dd"
+    }
+
+    User.checkoutDetails(details,(err,results)=>{
+        if(!err){
+            if(results){
+                res.send("wow");
+            }
+            else{
+               res.send(err);
+            }
+        } 
+    }); 
+    
+}
+
+
+module.exports = {insertUser,getuser,viewlogin,viewsignup,userLogout,userCheckout,userCheckoutSubmit};
