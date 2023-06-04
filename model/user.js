@@ -15,11 +15,5 @@ User.getUser = (email , callback) => {
     });
 };
 
- User.checkoutDetails = (details , callback) => {
-    connection.query('INSERT INTO checkout SET ?',details,(error,results) => {
-        callback(error,results); 
-    });  
-};
-
 module.exports = User;
 
