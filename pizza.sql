@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 08:51 PM
+-- Generation Time: Jun 04, 2023 at 09:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,47 @@ SET time_zone = "+00:00";
 --
 -- Database: `pizza`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checkout`
+--
+
+CREATE TABLE `checkout` (
+  `id` int(4) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `product` int(5) NOT NULL,
+  `order_id` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checkout`
+--
+
+INSERT INTO `checkout` (`id`, `name`, `email`, `address`, `city`, `state`, `country`, `product`, `order_id`) VALUES
+(1, 'Deepak', 'dm5260180@gmail.com', 'h no 210', 'ghaziabad', 'yp', 'JP', 3, 'ORDS63783'),
+(2, 'Deepak', 'dm5260180@gmail.com', 'h no 210', 'ghaziabad', 'yp', 'JP', 3, 'ORDS81591'),
+(3, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS39504'),
+(4, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS12641'),
+(5, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS8831'),
+(6, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS61609'),
+(7, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS18529'),
+(8, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'DK', 3, 'ORDS18324'),
+(9, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'HK', 3, 'ORDS59491'),
+(10, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'HK', 3, 'ORDS29204'),
+(11, 'Deepak Morya', 'helodeepakji@gmail.com', 'Ghaziabad', 'Ghaziabad', 'Uttar Pradesh', 'FI', 7, 'ORDS11835'),
+(12, 'Deepak', 'dm5260180@gmail.com', 'h no 210', 'ghaziabad', 'yp', 'DK', 7, 'ORDS765'),
+(13, 'Deepak Morya', 'helodeepakji@gmail.com', 'Ghaziabad', 'Ghaziabad', 'Uttar Pradesh', 'FI', 7, 'ORDS28234'),
+(14, 'Deepak Morya', 'helodeepakji@gmail.com', 'Ghaziabad', 'Ghaziabad', 'Uttar Pradesh', 'FI', 7, 'ORDS74188'),
+(15, 'Deepak Morya', 'helodeepakji@gmail.com', 'Ghaziabad', 'Ghaziabad', 'Uttar Pradesh', 'FI', 7, 'ORDS50602'),
+(16, 'sandeep', 'dm5260180@gmail.com', 'h no 210 rahul vihar daulatpura', 'ghaziabad', 'uttar pradesh', 'CA', 2, 'ORDS32849'),
+(17, 'Anurag', 'ak220088@gmail.com', 'H.no 299 Gali.no 2', 'Daulatpura', 'UTTAR PRADESH', 'DK', 6, 'ORDS29781');
 
 -- --------------------------------------------------------
 
@@ -43,6 +84,30 @@ INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `message`) VALUES
 (9, 'Shivani', '8076763204', 'shivani@gmail.com', 'me node'),
 (10, 'Shivani', '8076763204', 'shivani@gmail.com', 'me node'),
 (11, 'Shivam', '8076763204', 'shivanisingh36813@gmail.com', '????????????');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `id` int(4) NOT NULL,
+  `order_id` varchar(50) NOT NULL,
+  `product_id` int(5) NOT NULL,
+  `amount` int(10) NOT NULL,
+  `txn` varchar(150) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `order_id`, `product_id`, `amount`, `txn`, `date`) VALUES
+(1, 'ORDS50602', 7, 599, 'pay_LxxaCPyc79vtiB', '2023-06-05 00:31:32'),
+(2, 'ORDS32849', 2, 349, 'pay_Lxxe6UK3ZoqKPL', '2023-06-05 00:32:24'),
+(3, 'ORDS29781', 6, 149, 'pay_Lxy2yz0wDj8c79', '2023-06-05 00:55:57');
 
 -- --------------------------------------------------------
 
@@ -73,7 +138,7 @@ INSERT INTO `product` (`sno`, `product_name`, `product_desc`, `rate`, `price`, `
 (7, 'Vegan Meatballs\r\n', 'Few comfort foods satisfy like a hearty bowl of spaghetti and meatballs. Now, my vegan friends, you TOO can enjoy this comfort sans guilt! These chickpea based meatballs pack tons of flavor, come together quickly, and even provide a good amount of protein and fiber.', 799, 599, 'https://hips.hearstapps.com/hmg-prod/images/delish-190815-vegan-meatballs-0088-landscape-pf-1566333710.jpg?crop=0.668xw:1.00xh;0.0357xw,0&resize=1200:*'),
 (8, 'Veggie Kabobs\r\n', 'These kabobs have the *perfect* combination of flavors and textures. Serve them up with our ultimate meat-lovers veggie burger for a backyard vegetarian feast that even a carnivore couldn\'t turn down.', 499, 349, 'https://hips.hearstapps.com/hmg-prod/images/delish-200511-seo-veggie-kebabs-h-14487-eb-1590509811.jpg?crop=0.667xw:1.00xh;0.0663xw,0&resize=1200:*'),
 (9, 'Mussels with Tomatoes and Garlic', 'This dish will transport you straight to the Mediterranean seaside.\r\n\r\n', 399, 349, 'https://hips.hearstapps.com/del.h-cdn.co/assets/17/28/1024x683/gallery-1499895381-mussels-tomato-garlic-delish.jpg?resize=1200:*'),
-(10, 'sea shells', 'very taste', 1000, 700, 'https://www.licious.in/blog/wp-content/uploads/2022/02/shutterstock_1773695441-min-750x750.jpg');
+(10, 'sea shells chia', 'very taste', 1000, 700, 'https://www.licious.in/blog/wp-content/uploads/2022/02/shutterstock_1773695441-min-750x750.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,7 +150,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(150) NOT NULL,
-  `phone` varchar(13) NOT NULL,
+  `phone` varchar(13) DEFAULT NULL,
   `password` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -94,16 +159,28 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `phone`, `password`) VALUES
-(1, 'Deepak', 'helodeepakji@gmail.com', '8076763204', 'myPassword');
+(1, 'Deepak', 'helodeepakji@gmail.com', '8076763204', 'deepak');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `checkout`
+--
+ALTER TABLE `checkout`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -123,10 +200,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `checkout`
+--
+ALTER TABLE `checkout`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`

@@ -10,7 +10,6 @@ function generateOrderId(){
 }
 
 const userCheckout=(req,res)=>{
-    console.log(generateOrderId());
     const id = req.params.id;
     Product.getProduct(id,(err,results)=>{
         if(!err){
@@ -58,7 +57,7 @@ const userCheckoutSubmit=(req,res)=>{
         }else{
             Order.insertcheckoutDetails(details,(err,results)=>{
                 if(!err){
-                    res.render("payment.hbs",{payment:payment});
+                    res.render("payment",{payment:payment});
                 }else{
                     res.send(err);
                 }
