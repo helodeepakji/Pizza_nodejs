@@ -23,7 +23,7 @@ const userCheckout=(req,res)=>{
 const getallorder=(req,res)=>{
     Order.getAllOrder((err,results)=>{
         if(!err){
-            res.json(results);
+            res.render("order",{order:results});
         }else{
             res.send("invalid page");
         }
@@ -46,6 +46,7 @@ const userCheckoutSubmit=(req,res)=>{
     const payment = {
         name :  req.body.name,
         email :   req.body.email,
+        // phone: '',
         product_id : req.body.product_id,
         amount: req.body.amount * 100,
         order_id: orderid

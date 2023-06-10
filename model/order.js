@@ -23,7 +23,7 @@ Order.paymentSuccess = (payment , callback) => {
 
 
 Order.getAllOrder = (callback) => {
-    connection.query('SELECT * FROM payment JOIN checkout ON payment.order_id = checkout.order_id;',(error,results) => {
+    connection.query('SELECT * FROM payment JOIN checkout ON payment.order_id = checkout.order_id JOIN product ON product.sno = checkout.product;',(error,results) => {
         callback(error,results);
     });  
 };
