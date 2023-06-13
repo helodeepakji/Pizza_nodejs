@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-app.use(isAuthenticated);
+// app.use(isAuthenticated);
 
 app.use('/', router);
 

@@ -44,11 +44,11 @@ router.post('/login',getuser);
 
 router.get('/logout',userLogout);
 
-router.get('/checkout/:id',userCheckout);
+router.get('/checkout/:id',requireAuth,userCheckout);
 
 router.post('/checkout',userCheckoutSubmit);
 
-router.post('/payment',savePayment)
+router.post('/payment',requireAuth,savePayment)
 
 router.get('/allorder',getallorder)
 

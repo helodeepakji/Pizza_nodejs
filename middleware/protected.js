@@ -1,4 +1,5 @@
 function requireAuth(req, res, next) {
+  
     if ((!req.session.email)&&(!req.cookies.email)) {
       res.locals.isAuthenticated = false;
       res.redirect('/login');
