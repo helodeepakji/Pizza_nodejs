@@ -34,6 +34,7 @@ const getuser = (req, res) => {
             if(req.body.password==results.password)
             {
                 req.session.email = email;   
+                res.cookie('email', email);
                 res.redirect('/');
             }
             else{
@@ -49,6 +50,7 @@ const getuser = (req, res) => {
 };
 
 const userLogout = (req, res) => {
+    res.clearCookie('email');
     req.session.destroy((err)=>{
         if(err){
             res.send(err) ;

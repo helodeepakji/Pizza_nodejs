@@ -28,7 +28,7 @@ router.get('/',getallProduct);
 
 router.post('/search',searchProduct);
 
-router.get('/product/:sno',getProductonly);
+router.get('/product/:sno',requireAuth,getProductonly);
 
 router.get('/contact',viewContact);
 
