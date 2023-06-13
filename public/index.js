@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const app = express();
 const router = require('../router/route');
 const Port = 8000;
@@ -25,9 +24,9 @@ app.use(fileUpload());
 app.use(cookieParser());
 
 app.use(session({
-  secret: 'hellopizzajii',
-  resave: false,
-  saveUninitialized: true
+    secret: 'hellopizzajii',
+    resave: false,
+    saveUninitialized: true,
 }));
 
 app.use(isAuthenticated);
