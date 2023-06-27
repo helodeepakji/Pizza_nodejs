@@ -33,7 +33,10 @@ const getuser = (req, res) => {
           if(results){
             if(req.body.password==results.password)
             {
-                req.session.email = email;   
+                req.session.email = email;  
+                //add cookies 
+                res.cookie('email', email);
+
                 res.redirect('/');
             }
             else{
@@ -49,6 +52,8 @@ const getuser = (req, res) => {
 };
 
 const userLogout = (req, res) => {
+    //clear cookie
+    res.clearCookie('email');
     req.session.destroy((err)=>{
         if(err){
             res.send(err) ;
